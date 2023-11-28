@@ -26,12 +26,12 @@ def predict():
     return render_template("index.html", prediction=prediction, email_text=email_text)
 
 # Create an API endpoint
-@app.route('/api/predict', methods=['POST'])
+@app.route("/api/predict", methods=["GET"])
 def predict_api():
     data = request.get_json(force=True)  # Get data posted as a json
     email_text = data["email-content"]
     prediction=make_prediction(email_text)
-    return jsonify({'prediction': prediction, 'email_text': email_text})  # Return prediction
+    return jsonify({"prediction": prediction, "email_text": email_text})  # Return prediction
 
 
 
