@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mon App de Machine Learning</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        button{
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Email Spam Classifier</h1>
+
+    <div>
+        <form method="post" action="/predict">
+            <textarea name="email-content" placeholder="Enter your Email body" rows="15" cols="35"> {{email_text}}</textarea>
+            <br>
+            <br>
+            <div>
+                <button>Check Spam</button>
+                <a href="/">Reset</a>
+            </div>
+        </form>
+    </div>  
+
+    <div>
+        {% if prediction %}
+            {% if prediction == 1 %}
+            <h2 style="color: red">Spam</h2>
+            {% else %}
+            <h2 style="color: green">Not Spam</h2>
+            {% endif %}
+        {% endif %}
+    </div> 
+</body>
+</html>
